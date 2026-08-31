@@ -233,8 +233,8 @@ export function Navbar() {
               <span
                 aria-hidden="true"
                 className={cn(
-                  'pointer-events-none absolute -inset-x-5 -inset-y-3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(18,15,12,0.42)_0%,rgba(18,15,12,0.20)_52%,transparent_76%)] blur-md transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-100' : 'opacity-0',
+                  'pointer-events-none absolute -inset-x-5 -inset-y-3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(18,15,12,0.16)_0%,rgba(18,15,12,0.06)_52%,transparent_76%)] blur-md transition-opacity duration-[400ms] ease',
+                  navOnDark ? 'opacity-60' : 'opacity-0',
                 )}
               />
               {/* Deux images superposées, chacune s'effaçant vers
