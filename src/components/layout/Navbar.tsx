@@ -172,10 +172,17 @@ export function Navbar() {
           l'en-tête et suivent, eux, son changement de hauteur.
           Masqué en dessous de `xl` : sur téléphone/tablette, c'est le
           menu plein écran qui porte ces mêmes liens. */}
+      {/* z-[70], au-dessus du bandeau logo/actions (z-[60]) qui suit
+          juste après dans le DOM : à égalité de z-index, c'est ce
+          bandeau — dont la boîte s'étend sur toute la largeur de
+          l'en-tête à cause de `justify-between`, y compris l'espace
+          vide entre le logo et les boutons — qui aurait autrement
+          intercepté le clic destiné aux liens, alors même qu'ils
+          restent visuellement au même endroit. */}
       <nav
         aria-label={t('Navigation')}
         className={cn(
-          'fixed left-1/2 top-[52px] z-[60] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:block',
+          'fixed left-1/2 top-[52px] z-[70] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:block',
           navLinksVisible ? 'opacity-100 scale-100' : 'pointer-events-none opacity-0 scale-95',
         )}
       >

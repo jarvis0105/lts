@@ -6,31 +6,44 @@ import { REVIEWS } from "@/lib/content";
 
 
 /* ── Distinctions ────────────────────────────────────────────────── */
+/* Chaque distinction pointe vers sa fiche officielle : les deux
+   badges Michelin (étoile rouge + étoile verte) renvoient vers la
+   même page du Guide Michelin, qui affiche les deux ; le badge
+   Gault & Millau renvoie vers la fiche du restaurant sur
+   gaultmillau.com. Le score chiffré (15,5/20) a été retiré : le
+   visuel des trois toques suffit à porter la distinction, sans
+   dupliquer une note qui vit déjà sur la fiche Gault & Millau
+   elle-même. */
+const MICHELIN_URL = "https://guide.michelin.com/fr/fr/pays-de-la-loire/angers/restaurant/lait-thym-sel";
+const GAULT_MILLAU_URL = "https://fr.gaultmillau.com/fr/restaurants/lait-thym-sel";
+
 const AWARDS = [
   {
-    icon: "★",
+    badge: "/badges/badge-michelin-etoile.png",
     label: "Étoile Michelin",
     detail: "Étoilé depuis 2019",
     bg: "bg-foreground",
     text: "text-white",
     accent: "text-brand",
+    href: MICHELIN_URL,
   },
   {
-    icon: "☘",
+    badge: "/badges/badge-michelin-verte.png",
     label: "Étoile Verte",
     detail: "Gastronomie durable · Depuis 2021",
     bg: "bg-emerald-800",
     text: "text-white",
     accent: "text-emerald-300",
+    href: MICHELIN_URL,
   },
   {
-    icon: "15,5",
-    label: "/ 20",
-    detail: "Gault & Millau",
+    badge: "/badges/badge-gault-millau-toques.png",
+    label: "Gault & Millau",
+    detail: "3 toques",
     bg: "bg-[#c8102e]",
     text: "text-white",
     accent: "text-white/80",
-    scoreMode: true,
+    href: GAULT_MILLAU_URL,
   },
 ];
 
@@ -73,24 +86,25 @@ export default function Reviews() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
             {AWARDS.map((a, i) => (
-              <div key={i}
-                                className={`reveal-fade ${a.bg} ${a.text} p-10 text-center flex flex-col items-center justify-center gap-3`}
+              <a
+                key={i}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                                className={`reveal-fade ${a.bg} ${a.text} p-10 text-center flex flex-col items-center justify-center gap-3 transition-opacity duration-300 hover:opacity-90`}
                                 style={{ ['--reveal-delay' as string]: `${i * 140}ms` }}
               >
-                {a.scoreMode ? (
-                  <div className="flex items-baseline gap-1">
-                    <span className={`font-serif text-5xl font-bold ${a.accent}`}>{a.icon}</span>
-                    <span className="font-serif text-2xl text-white/60">{t(a.label)}</span>
-                  </div>
-                ) : (
-                  <span className={`text-5xl ${a.accent}`}>{a.icon}</span>
-                )}
+                <img
+                  src={a.badge}
+                  alt={t(a.label)}
+                  className="h-16 w-auto object-contain md:h-20"
+                  loading="lazy"
+                />
                 <div>
-                  {!a.scoreMode && <p className={`font-serif text-lg font-medium ${a.text}`}>{t(a.label)}</p>}
-                  {a.scoreMode && <p className="font-serif text-lg ">{t(a.detail)}</p>}
-                  {!a.scoreMode && <p className={`text-xs uppercase tracking-[0.25em] mt-1 ${a.accent}`}>{t(a.detail)}</p>}
+                  <p className={`font-serif text-lg font-medium ${a.text}`}>{t(a.label)}</p>
+                  <p className={`text-xs uppercase tracking-[0.25em] mt-1 ${a.accent}`}>{t(a.detail)}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
