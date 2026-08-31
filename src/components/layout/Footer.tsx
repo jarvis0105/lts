@@ -42,7 +42,7 @@ export function Footer() {
 
       <div className="container relative mx-auto px-5 pb-8 pt-16 md:px-8 md:pb-10 md:pt-24">
         <div className="mx-auto max-w-5xl">
-        <div className="mt-0 grid gap-12 md:grid-cols-3 md:gap-10">
+        <div className="mt-0 grid gap-12 md:grid-cols-3 md:gap-14 lg:gap-20">
           {/* ── Colonne "La maison" : le colophon ─────────────────── */}
           <div className="reveal-fade text-left">
             <img
