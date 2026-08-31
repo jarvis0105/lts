@@ -511,7 +511,7 @@ export default function Home() {
             <button
               onClick={reserve}
               disabled={opening}
-              className="inline-flex h-14 w-full cursor-pointer items-center justify-center rounded-none border border-brand bg-brand px-10 text-sm font-medium uppercase tracking-[0.25em] text-white shadow-[0_8px_24px_rgba(70,45,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-strong hover:shadow-[0_12px_28px_rgba(70,45,20,0.18)] disabled:cursor-default disabled:opacity-70 sm:w-auto"
+              className="inline-flex h-14 w-full cursor-pointer items-center justify-center rounded-none border border-background bg-background px-10 text-sm font-medium uppercase tracking-[0.25em] text-foreground shadow-[0_8px_24px_rgba(70,45,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-background/90 hover:shadow-[0_12px_28px_rgba(70,45,20,0.18)] disabled:cursor-default disabled:opacity-70 sm:w-auto"
               data-testid="btn-home-reserve"
             >
               {opening ? t('Ouverture…') : t('Réserver en ligne')}
@@ -522,7 +522,7 @@ export default function Home() {
               className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-none border border-background/35 px-10 text-sm font-medium uppercase tracking-[0.25em] text-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand/10 hover:text-background sm:w-auto"
               data-testid="link-reserve-call"
             >
-              <Phone className="h-4 w-4 text-brand" />
+              <Phone className="h-4 w-4 text-background" />
               {RESTAURANT.phone}
             </a>
           </div>
