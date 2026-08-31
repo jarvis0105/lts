@@ -189,7 +189,7 @@ export function Navbar() {
               <a
                 href={path(link.href)}
                 className={cn(
-                  'nav-link-premium font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
+                  'nav-link-premium cursor-pointer font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
                   navOnDark || mobileMenuOpen ? 'text-white' : 'text-foreground',
                 )}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
@@ -212,7 +212,7 @@ export function Navbar() {
           {/* Gauche : le nom de la maison, seul. */}
           <Link
             href={path("/")}
-            className="inline-flex items-center"
+            className="inline-flex cursor-pointer items-center"
             data-testid="link-home-logo"
           >
             {/* Le logo officiel de la maison, en une seule image plutôt
@@ -341,7 +341,7 @@ export function Navbar() {
                    retombe à zéro : la sortie doit être immédiate, pas
                    rejouer la cascade à l'envers. */
                 className={cn(
-                  "menu-item inline-block w-full py-2 text-left font-serif text-2xl text-background/90 transition-[opacity,transform,color] duration-500 ease-out hover:text-brand md:py-2.5 md:text-3xl",
+                  "menu-item inline-block w-full cursor-pointer py-2 text-left font-serif text-2xl text-background/90 transition-[opacity,transform,color] duration-500 ease-out hover:text-brand md:py-2.5 md:text-3xl",
                   mobileMenuOpen ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0",
                 )}
                 style={{ transitionDelay: mobileMenuOpen ? `${160 + i * 70}ms` : "0ms" }}
