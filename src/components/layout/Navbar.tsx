@@ -175,7 +175,7 @@ export function Navbar() {
       <nav
         aria-label={t('Navigation')}
         className={cn(
-          'fixed left-1/2 top-[52px] z-[60] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:block',
+          'fixed left-1/2 top-[52px] z-[70] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:pointer-events-auto xl:block',
           navLinksVisible ? 'opacity-100 scale-100' : 'pointer-events-none opacity-0 scale-95',
         )}
       >
@@ -207,7 +207,7 @@ export function Navbar() {
           l'écran — d'autant plus nettement sur grand écran. Ici, il
           est réellement aligné à gauche, et le bouton de réservation
           à droite. */}
-      <div className="relative z-[60] w-full px-5 md:px-8">
+      <div className="pointer-events-auto relative z-[70] w-full px-5 md:px-8">
         <div className="relative flex items-center justify-between gap-4">
           {/* Gauche : le nom de la maison, seul. */}
           <Link
