@@ -511,17 +511,18 @@ export default function Home() {
             <button
               onClick={reserve}
               disabled={opening}
-              className="inline-flex items-center justify-center h-14 px-10 text-sm tracking-[0.25em] uppercase font-medium rounded-none bg-background text-foreground hover:bg-brand/10 transition-colors duration-300 w-full sm:w-auto cursor-pointer disabled:opacity-70"
+              className="inline-flex h-14 w-full cursor-pointer items-center justify-center rounded-none border border-brand bg-brand px-10 text-sm font-medium uppercase tracking-[0.25em] text-white shadow-[0_8px_24px_rgba(70,45,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-strong hover:shadow-[0_12px_28px_rgba(70,45,20,0.18)] disabled:cursor-default disabled:opacity-70 sm:w-auto"
               data-testid="btn-home-reserve"
             >
               {opening ? t('Ouverture…') : t('Réserver en ligne')}
             </button>
             <a
               href={RESTAURANT.phoneHref}
-              className="inline-flex items-center justify-center h-14 px-10 text-sm tracking-[0.25em] uppercase font-medium rounded-none border border-background/20 text-background hover:bg-background hover:text-foreground transition-colors duration-300 w-full sm:w-auto"
+              aria-label={t(`Nous appeler au ${RESTAURANT.phone}`)}
+              className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-none border border-background/35 px-10 text-sm font-medium uppercase tracking-[0.25em] text-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand/10 hover:text-background sm:w-auto"
               data-testid="link-reserve-call"
             >
-              <Phone className="w-4 h-4 mr-2" />
+              <Phone className="h-4 w-4 text-brand" />
               {RESTAURANT.phone}
             </a>
           </div>
