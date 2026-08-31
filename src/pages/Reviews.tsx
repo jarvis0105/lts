@@ -11,7 +11,9 @@ const AWARDS = [
     label: "Étoile Michelin",
     detail: "Étoilé depuis 2019",
     accent: "text-brand",
-    michelin: true,
+    image: "https://laitthymsel.com/wp-content/uploads/2023/10/Michelin-etoile-copie.png",
+    imageAlt: "Lait Thym Sel, répertorié au Guide Michelin avec 1 étoile rouge et 1 étoile verte",
+    href: "https://guide.michelin.com/fr/fr/pays-de-la-loire/angers/restaurant/lait-thym-sel",
   },
   {
     icon: "✦",
@@ -20,11 +22,12 @@ const AWARDS = [
     accent: "text-brand",
   },
   {
-    icon: "15,5",
-    label: "/ 20",
-    detail: "Gault & Millau",
+    label: "Gault & Millau",
+    detail: "15,5 / 20",
     accent: "text-brand",
-    scoreMode: true,
+    image: "https://laitthymsel.com/wp-content/uploads/2023/10/Gault-et-Millau-copie.png",
+    imageAlt: "Gault et Millau, guide gastronomique français",
+    href: "https://fr.gaultmillau.com/restaurants/lait-thym-sel",
   },
 ];
 
@@ -72,17 +75,19 @@ export default function Reviews() {
                 className="reveal-fade flex min-h-[220px] flex-col items-center justify-center gap-5 border border-white/10 bg-white/[0.03] p-8 text-center transition-colors duration-500 hover:border-brand/50 hover:bg-white/[0.06]"
                 style={{ ['--reveal-delay' as string]: `${i * 140}ms` }}
               >
-                {a.michelin ? (
-                  <div className="flex flex-col items-center leading-none text-brand">
-                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.34em]">MICHELIN</span>
-                    <span className="mt-2 font-serif text-2xl tracking-[0.18em]">GUIDE</span>
-                    <span className="mt-3 h-px w-8 bg-brand/70" />
-                  </div>
-                ) : a.scoreMode ? (
-                  <div className="flex items-baseline gap-1">
-                    <span className={`font-serif text-5xl font-medium ${a.accent}`}>{a.icon}</span>
-                    <span className="font-serif text-2xl text-white/55">{t(a.label)}</span>
-                  </div>
+                {a.image ? (
+                  <a
+                    href={a.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-20 w-full items-center justify-center transition-opacity duration-300 hover:opacity-75"
+                  >
+                    <img
+                      src={a.image}
+                      alt={a.imageAlt}
+                      className="max-h-full max-w-[150px] object-contain"
+                    />
+                  </a>
                 ) : (
                   <span className={`font-serif text-4xl ${a.accent}`}>{a.icon}</span>
                 )}
