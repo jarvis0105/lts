@@ -116,11 +116,11 @@ export function Footer() {
             <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Réserver votre table')}</span>
             <Link
               href={path('/reservation')}
-              className="group footer-link mt-5 inline-flex w-full items-center justify-between gap-5 border border-brand/50 px-5 py-4 font-serif text-xl text-background transition-colors duration-300 hover:bg-brand/10"
+              className="group footer-link mt-5 inline-flex w-full items-center justify-between gap-5 border-0 border-b border-brand/50 px-0 py-3 font-sans text-xs uppercase tracking-[0.24em] text-background transition-colors duration-300 hover:bg-transparent"
               data-testid="link-footer-reserve"
             >
               {t('Réserver')}
-              <ArrowRight className="h-4 w-4 text-[#8B572A] transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 text-brand transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <span className="mt-12 text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Langues')}</span>
             <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
