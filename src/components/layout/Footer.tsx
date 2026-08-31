@@ -41,14 +41,14 @@ export function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-brand/70" />
 
       <div className="container relative mx-auto px-5 pb-8 pt-16 md:px-8 md:pb-10 md:pt-24">
-        <div className="mx-auto max-w-3xl">
-        <div className="mt-0 grid gap-14 md:mt-0 md:grid-cols-12 md:gap-12">
+        <div className="mx-auto max-w-5xl">
+        <div className="mt-0 grid gap-12 md:grid-cols-3 md:gap-10">
           {/* ── Colonne "La maison" : le colophon ─────────────────── */}
-          <div className="reveal-fade text-left md:col-span-6">
+          <div className="reveal-fade text-left">
             <img
               src="/logos/logo-horizontal-blanc.png"
               alt={t('LAIT THYM SEL')}
-              className="h-16 w-auto md:h-20"
+              className="h-12 w-auto opacity-95 transition-opacity duration-300 hover:opacity-80 md:h-16"
             />
             <p className="mt-5 font-serif text-xl italic text-background/60">
               {t('L’Élégance de la Simplicité')}
@@ -67,14 +67,30 @@ export function Footer() {
                 </a>
               </div>
             </div>
+            <div className="mt-10 border-t border-background/10 pt-5 text-xs text-background/45">
+              <p>© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
+              <div className="mt-4 flex items-center gap-4">
+                <a href={RESTAURANT.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-instagram" aria-label="Instagram">
+                  <InstagramMark className="h-4 w-4" />
+                </a>
+                <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-facebook" aria-label="Facebook">
+                  <FacebookMark className="h-4 w-4" />
+                </a>
+              </div>
+              <div className="mt-5 flex items-center gap-4 whitespace-nowrap">
+                <Link href={path("/mentions-legales")} className="footer-meta-link ml-auto" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
+                <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>
+                <Link href={path("/cgu")} className="footer-meta-link" data-testid="link-footer-terms">{t("CGU")}</Link>
+              </div>
+            </div>
           </div>
 
           {/* ── Colonne "Sommaire" : l'index numéroté ─────────────── */}
-          <div className="reveal-fade flex flex-col items-center md:col-span-6 md:col-start-7">
+          <div className="reveal-fade flex flex-col items-start">
             <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">
               {t('Explorer la maison')}
             </span>
-            <nav aria-label={t('Explorer la maison')} className="mt-5 flex flex-col items-center gap-3">
+            <nav aria-label={t('Explorer la maison')} className="mt-5 flex flex-col items-start gap-3">
               {EXPLORE_LINKS.map((item) => (
                 item.external ? (
                   <a
@@ -106,42 +122,21 @@ export function Footer() {
               data-testid="link-footer-reserve"
             >
               {t('Réserver votre table')}
-              <ArrowRight className="h-4 w-4 text-brand" />
+              <ArrowRight className="h-4 w-4 text-[#8B572A]" />
             </Link>
           </div>
-        </div>
 
-        <div className="mt-16 flex items-center justify-center md:mt-20">
-          <span className="h-px w-24 bg-background/15" />
-        </div>
-
-        <div className="mt-10 flex flex-col items-center gap-6 pt-2 md:flex-row md:justify-between">
-          <div className="flex items-center gap-4">
-            <a href={RESTAURANT.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-link" data-testid="link-social-instagram" aria-label="Instagram">
-              <InstagramMark className="h-5 w-5" />
-            </a>
-            <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-link" data-testid="link-social-facebook" aria-label="Facebook">
-              <FacebookMark className="h-5 w-5" />
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
-            <span className={lang === 'fr' ? 'text-background' : 'text-background/35'}>FR</span>
-            <span className="text-background/25">/</span>
-            {lang === 'fr' ? (
-              <Link href={otherLangHref} hrefLang={other} className="footer-link inline-flex items-center" data-testid="link-footer-lang-en">EN</Link>
-            ) : (
-              <span className="text-background">EN</span>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-background/10 pt-6 text-xs text-background/45 md:flex-row">
-          <p className="mr-auto">© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link href={path("/mentions-legales")} className="footer-meta-link" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
-            <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>
-            <Link href={path("/cgu")} className="footer-meta-link" data-testid="link-footer-terms">{t("CGU")}</Link>
+          <div className="reveal-fade flex flex-col items-start">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Langues')}</span>
+            <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
+              <span className={lang === 'fr' ? 'text-background' : 'text-background/35'}>FR</span>
+              <span className="text-background/25">/</span>
+              {lang === 'fr' ? (
+                <Link href={otherLangHref} hrefLang={other} className="footer-link inline-flex items-center" data-testid="link-footer-lang-en">EN</Link>
+              ) : (
+                <span className="text-background">EN</span>
+              )}
+            </div>
           </div>
         </div>
         </div>
