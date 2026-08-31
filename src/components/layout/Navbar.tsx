@@ -229,14 +229,7 @@ export function Navbar() {
                 le changement de fichier au passage d'une section à
                 l'autre. Pas d'effet au survol : le logo reste
                 strictement statique, quel que soit le pointeur. */}
-            <div className="relative flex h-9 items-center sm:h-11 md:h-14">
-              <span
-                aria-hidden="true"
-                className={cn(
-                  'pointer-events-none absolute -inset-x-5 -inset-y-3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(18,15,12,0.16)_0%,rgba(18,15,12,0.06)_52%,transparent_76%)] blur-md transition-opacity duration-[400ms] ease',
-                  navOnDark || mobileMenuOpen ? 'opacity-60' : 'opacity-0',
-                )}
-              />
+            <div className="relative flex h-9 items-center drop-shadow-[0_1px_8px_rgba(18,15,12,0.18)] sm:h-11 md:h-14">
               {/* Deux images superposées, chacune s'effaçant vers
                   l'autre en opacité (400 ms) plutôt qu'un `<img>`
                   unique dont on change la source : un changement de
@@ -286,7 +279,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
-                'toggle-nav group relative -mr-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-current/20 p-1.5 transition-[background-color,border-color,opacity] duration-300 hover:bg-current/5 xl:hidden',
+                'toggle-nav group relative -mr-1 inline-flex cursor-pointer items-center justify-center p-1.5 transition-opacity duration-300 hover:opacity-75 xl:hidden',
                 mobileMenuOpen && 'is-open',
               )}
               data-testid="button-mobile-menu"
@@ -305,7 +298,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'relative block overflow-visible',
-                  navOnDark || mobileMenuOpen ? 'text-white' : 'text-foreground',
+                  navOnDark || mobileMenuOpen ? 'text-[#F5F0E8]' : 'text-foreground',
                 )}
               >
                 <line x1="0" y1="3" x2="26" y2="3" className="toggle-nav__bar toggle-nav__bar--1" />
