@@ -189,7 +189,7 @@ export function Navbar() {
               <Link
                 href={path(link.href)}
                 className={cn(
-                  'font-nav text-[17px] tracking-[0.12em] transition-opacity duration-300 hover:opacity-70',
+                  'nav-link-premium font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#B8865B] focus-visible:text-[#B8865B]',
                   navOnDark ? 'text-white' : 'text-foreground',
                 )}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
@@ -230,6 +230,13 @@ export function Navbar() {
                 l'autre. Pas d'effet au survol : le logo reste
                 strictement statique, quel que soit le pointeur. */}
             <div className="relative flex h-9 items-center sm:h-11 md:h-14">
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'pointer-events-none absolute -inset-x-5 -inset-y-3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(18,15,12,0.42)_0%,rgba(18,15,12,0.20)_52%,transparent_76%)] blur-md transition-opacity duration-[400ms] ease',
+                  navOnDark ? 'opacity-100' : 'opacity-0',
+                )}
+              />
               {/* Deux images superposées, chacune s'effaçant vers
                   l'autre en opacité (400 ms) plutôt qu'un `<img>`
                   unique dont on change la source : un changement de
