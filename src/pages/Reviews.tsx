@@ -106,7 +106,7 @@ export default function Reviews() {
         <div className="container mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-4">
             <StarRow count={5} />
-            <span className="font-serif text-2xl text-foreground">4,9 / 5</span>
+            <span className="font-serif text-2xl text-foreground">4,8 / 5</span>
             <span className="text-muted-foreground text-sm">{t("287 avis Google")}</span>
           </div>
         </div>
