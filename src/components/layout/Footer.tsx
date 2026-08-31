@@ -110,18 +110,19 @@ export function Footer() {
               ))}
             </nav>
 
-            <Link
-              href={path('/reservation')}
-              className="footer-link mt-10 inline-flex items-center gap-3 border-b border-brand/60 pb-2 font-serif text-lg text-background"
-              data-testid="link-footer-reserve"
-            >
-              {t('Réserver votre table')}
-              <ArrowRight className="h-4 w-4 text-[#8B572A]" />
-            </Link>
           </div>
 
-          <div className="reveal-fade flex flex-col items-start">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Langues')}</span>
+          <div className="reveal-fade flex flex-col items-start md:pt-1">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Réserver votre table')}</span>
+            <Link
+              href={path('/reservation')}
+              className="group footer-link mt-5 inline-flex w-full items-center justify-between gap-5 border border-brand/50 px-5 py-4 font-serif text-xl text-background transition-colors duration-300 hover:bg-brand/10"
+              data-testid="link-footer-reserve"
+            >
+              {t('Réserver')}
+              <ArrowRight className="h-4 w-4 text-[#8B572A] transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <span className="mt-12 text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Langues')}</span>
             <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
               <span className={lang === 'fr' ? 'text-background' : 'text-background/35'}>FR</span>
               <span className="text-background/25">/</span>
