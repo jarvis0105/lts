@@ -68,7 +68,6 @@ export function Footer() {
               </div>
             </div>
             <div className="mt-10 border-t border-background/10 pt-5 text-xs text-background/45">
-              <p>© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
               <div className="mt-4 flex items-center gap-4">
                 <a href={RESTAURANT.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-instagram" aria-label="Instagram">
                   <InstagramMark className="h-4 w-4" />
@@ -76,11 +75,6 @@ export function Footer() {
                 <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-facebook" aria-label="Facebook">
                   <FacebookMark className="h-4 w-4" />
                 </a>
-              </div>
-              <div className="mt-5 flex items-center gap-4 whitespace-nowrap">
-                <Link href={path("/mentions-legales")} className="footer-meta-link ml-auto" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
-                <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>
-                <Link href={path("/cgu")} className="footer-meta-link" data-testid="link-footer-terms">{t("CGU")}</Link>
               </div>
             </div>
           </div>
@@ -137,6 +131,15 @@ export function Footer() {
                 <span className="text-background">EN</span>
               )}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-4 border-t border-background/10 pt-5 text-xs text-background/45 md:flex-row md:items-center md:justify-between">
+          <p>© 2026 LAIT THYM SEL. {t("Tous droits réservés")}</p>
+          <div className="flex items-center gap-6 whitespace-nowrap">
+            <Link href={path("/mentions-legales")} className="footer-meta-link" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
+            <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>
+            <Link href={path("/cgu")} className="footer-meta-link" data-testid="link-footer-terms">{t("CGU")}</Link>
           </div>
         </div>
         </div>
