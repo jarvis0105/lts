@@ -52,7 +52,7 @@ function HeroTitle({ lines }: { lines: string[] }) {
             const span = (
               <span className="hero-title__mask" key={`${li}-${wi}`}>
                 <span
-                  className="hero-title__word"
+                  className={`hero-title__word ${word === 'L’Élégance' || word === 'la' ? 'font-medium' : ''}`}
                   style={{ '--word-delay': `${delay}s` } as CSSProperties}
                 >
                   {word}
@@ -134,11 +134,6 @@ export default function Home() {
             <HeroTitle lines={[t('L’Élégance'), t('de la Simplicité')]} />
           </h1>
 
-          {/* Sous-titre : accroche courte, largeur contrainte pour
-              rester lisible sur une à deux lignes. */}
-          <p className="reveal-fade mt-5 max-w-[580px] text-sm md:text-base text-white/80 leading-relaxed">
-            {t('Cuisine de saison, produits d’exception, atmosphère intime.')}
-          </p>
         </div>
       </section>
 
