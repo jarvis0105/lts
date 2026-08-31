@@ -52,7 +52,7 @@ function MenuCard({
 
       <div className="flex flex-wrap items-center gap-3 mt-auto pt-2">
         {item.vegetarien && (
-          <span className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1">
+          <span className="inline-flex items-center gap-1.5 border border-brand/30 bg-brand/10 px-3 py-1 text-xs uppercase tracking-widest text-brand-strong">
             <Leaf className="w-3 h-3" />
             {t("Version végétarienne sur demande")}
           </span>
