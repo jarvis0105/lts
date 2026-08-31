@@ -185,7 +185,7 @@ export default function Reservation() {
           {/* Conditions : l'empreinte bancaire et la pénalité doivent
               être connues du client AVANT qu'il ne valide. */}
           <section
-            className="reveal-fade bg-brand/55 p-7 md:p-8 space-y-3 shadow-[0_8px_30px_rgba(70,45,20,0.04)]"
+            className="reveal-fade bg-brand/20 p-7 md:p-8 space-y-3 shadow-[0_8px_30px_rgba(70,45,20,0.04)]"
           >
             <div className="flex items-center gap-3">
               <Info className="w-4 h-4 text-brand-strong shrink-0" />

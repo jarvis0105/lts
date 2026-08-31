@@ -175,7 +175,7 @@ export function Navbar() {
       <nav
         aria-label={t('Navigation')}
         className={cn(
-          'fixed left-1/2 top-[52px] z-[60] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:block',
+          'fixed left-1/2 top-[52px] z-[70] hidden -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-out xl:pointer-events-auto xl:block',
           navLinksVisible ? 'opacity-100 scale-100' : 'pointer-events-none opacity-0 scale-95',
         )}
       >
@@ -189,8 +189,8 @@ export function Navbar() {
               <Link
                 href={path(link.href)}
                 className={cn(
-                  'font-nav text-[17px] tracking-[0.12em] transition-opacity duration-300 hover:opacity-70',
-                  navOnDark ? 'text-white' : 'text-foreground',
+                  'nav-link-premium cursor-pointer font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
+                  navOnDark || mobileMenuOpen ? 'text-white' : 'text-foreground',
                 )}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
@@ -207,12 +207,12 @@ export function Navbar() {
           l'écran — d'autant plus nettement sur grand écran. Ici, il
           est réellement aligné à gauche, et le bouton de réservation
           à droite. */}
-      <div className="relative z-[60] w-full px-5 md:px-8">
+      <div className="pointer-events-auto relative z-[70] w-full px-6 md:px-8">
         <div className="relative flex items-center justify-between gap-4">
           {/* Gauche : le nom de la maison, seul. */}
           <Link
             href={path("/")}
-            className="inline-flex items-center"
+            className="inline-flex cursor-pointer items-center"
             data-testid="link-home-logo"
           >
             {/* Le logo officiel de la maison, en une seule image plutôt
@@ -229,7 +229,7 @@ export function Navbar() {
                 le changement de fichier au passage d'une section à
                 l'autre. Pas d'effet au survol : le logo reste
                 strictement statique, quel que soit le pointeur. */}
-            <div className="relative flex h-9 items-center sm:h-11 md:h-14">
+            <div className="relative flex h-9 items-center drop-shadow-[0_1px_8px_rgba(18,15,12,0.18)] sm:h-11 md:h-14">
               {/* Deux images superposées, chacune s'effaçant vers
                   l'autre en opacité (400 ms) plutôt qu'un `<img>`
                   unique dont on change la source : un changement de
@@ -253,7 +253,7 @@ export function Navbar() {
                 alt="Lait Thym Sel — Fanny & Gaëtan Morvan"
                 className={cn(
                   'absolute inset-0 block h-full w-auto object-contain transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-0' : 'opacity-100',
+                  navOnDark || mobileMenuOpen ? 'opacity-0' : 'opacity-100',
                 )}
               />
               <img
@@ -262,7 +262,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'absolute inset-0 block h-full w-auto object-contain transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-100' : 'opacity-0',
+                  navOnDark || mobileMenuOpen ? 'opacity-100' : 'opacity-0',
                 )}
               />
             </div>
@@ -273,13 +273,13 @@ export function Navbar() {
               Plus de bouton flottant qui suit le défilement : ce
               bouton-ci, toujours à la même place dans l'en-tête,
               suffit. */}
-          <div className="flex items-center gap-5 md:gap-7">
-            <LangSwitch onDark={navOnDark} className="hidden sm:flex" />
-            <ReserveButton onDarkHero={navOnDark} />
+          <div className="flex items-center gap-6 md:gap-7">
+            <LangSwitch onDark={navOnDark || mobileMenuOpen} className="hidden sm:flex" />
+            <ReserveButton onDarkHero={navOnDark || mobileMenuOpen} />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
-                'toggle-nav group relative -mr-1.5 inline-flex items-center p-1.5 transition-opacity duration-300 xl:hidden',
+                'toggle-nav group relative -mr-1 inline-flex cursor-pointer items-center justify-center p-1.5 transition-opacity duration-300 hover:opacity-75 xl:hidden',
                 mobileMenuOpen && 'is-open',
               )}
               data-testid="button-mobile-menu"
@@ -298,7 +298,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'relative block overflow-visible',
-                  navOnDark ? 'text-white' : 'text-foreground',
+                  navOnDark || mobileMenuOpen ? 'text-[#F5F0E8]' : 'text-foreground',
                 )}
               >
                 <line x1="0" y1="3" x2="26" y2="3" className="toggle-nav__bar toggle-nav__bar--1" />
@@ -334,7 +334,7 @@ export function Navbar() {
                    retombe à zéro : la sortie doit être immédiate, pas
                    rejouer la cascade à l'envers. */
                 className={cn(
-                  "menu-item inline-block w-full py-2 text-left font-serif text-2xl text-background/90 transition-[opacity,transform,color] duration-500 ease-out hover:text-brand md:py-2.5 md:text-3xl",
+                  "menu-item inline-block w-full cursor-pointer py-2 text-left font-serif text-2xl text-background/90 transition-[opacity,transform,color] duration-500 ease-out hover:text-brand md:py-2.5 md:text-3xl",
                   mobileMenuOpen ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0",
                 )}
                 style={{ transitionDelay: mobileMenuOpen ? `${160 + i * 70}ms` : "0ms" }}
@@ -381,7 +381,7 @@ export function Navbar() {
             </div>
 
             <div className="mt-7 flex justify-start sm:hidden">
-              <LangSwitch onDark className="text-background/70" />
+              <LangSwitch onDark className="text-white" />
             </div>
           </div>
         </div>

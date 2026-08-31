@@ -39,7 +39,7 @@ export function ReserveButton({ onDarkHero = false, className }: ReserveButtonPr
       onClick={handleClick}
       disabled={opening}
       className={cn(
-        'inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap px-1 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 disabled:cursor-default disabled:opacity-60 md:text-xs md:tracking-[0.2em]',
+        'pointer-events-auto inline-flex h-10 cursor-pointer items-center justify-center whitespace-nowrap px-1 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357] disabled:cursor-default disabled:opacity-60 md:text-xs md:tracking-[0.2em]',
         onDarkHero ? 'text-white' : 'text-foreground',
         className,
       )}

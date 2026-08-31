@@ -1,7 +1,6 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useLang } from "@/i18n";
-import { Ornament } from "@/components/Ornament";
 import { DINNER_DAYS_LABEL, LUNCH_DAYS_LABEL, formatService, LUNCH, DINNER, RESTAURANT } from "@/lib/restaurant";
 
 /* Sommaire éditorial du pied de page — numéroté comme un index de
@@ -41,33 +40,19 @@ export function Footer() {
     <footer data-nav-theme="dark" className="relative overflow-hidden bg-foreground text-background/90">
       <div className="absolute inset-x-0 top-0 h-px bg-brand/70" />
 
-      {/* Le motif "sel" cité une dernière fois, en filigrane — la
-          signature graphique de la maison referme la page plutôt
-          que le nom en toutes lettres. */}
-      <Ornament
-        variant="sel"
-        className="pointer-events-none absolute -right-16 -top-16 hidden h-[26rem] w-[26rem] text-brand/[0.07] md:block"
-      />
-
       <div className="container relative mx-auto px-5 pb-8 pt-16 md:px-8 md:pb-10 md:pt-24">
-        <div className="mx-auto max-w-3xl">
-        <div className="mt-0 grid gap-14 md:mt-0 md:grid-cols-12 md:gap-12">
+        <div className="mx-auto max-w-5xl">
+        <div className="mt-0 grid gap-12 md:grid-cols-3 md:gap-14 lg:gap-20">
           {/* ── Colonne "La maison" : le colophon ─────────────────── */}
-          <div className="reveal-fade text-left md:col-span-6">
+          <div className="reveal-fade text-left">
             <img
               src="/logos/logo-horizontal-blanc.png"
               alt={t('LAIT THYM SEL')}
-              className="h-16 w-auto md:h-20"
+              className="h-12 w-auto opacity-95 transition-opacity duration-300 hover:opacity-80 md:h-16"
             />
             <p className="mt-5 font-serif text-xl italic text-background/60">
               {t('L’Élégance de la Simplicité')}
             </p>
-            <div className="mt-3 flex items-center justify-start gap-2" aria-hidden="true">
-              <Ornament variant="lait" className="h-3.5 w-3.5 text-brand/45" />
-              <Ornament variant="thym" className="h-3.5 w-3.5 text-brand/45" />
-              <Ornament variant="sel" className="h-3.5 w-3.5 text-brand/45" />
-            </div>
-
             <div className="mt-8 text-sm leading-relaxed text-background/65">
               <p>{RESTAURANT.street}, {RESTAURANT.postalCode} {RESTAURANT.city}</p>
               <p className="mt-2 text-xs text-background/45">
@@ -82,14 +67,24 @@ export function Footer() {
                 </a>
               </div>
             </div>
+            <div className="mt-10 border-t border-background/10 pt-5 text-xs text-background/45">
+              <div className="mt-4 flex items-center gap-4">
+                <a href={RESTAURANT.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-instagram" aria-label="Instagram">
+                  <InstagramMark className="h-4 w-4" />
+                </a>
+                <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-link h-9 w-9" data-testid="link-social-facebook" aria-label="Facebook">
+                  <FacebookMark className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* ── Colonne "Sommaire" : l'index numéroté ─────────────── */}
-          <div className="reveal-fade flex flex-col items-center md:col-span-6 md:col-start-7">
+          <div className="reveal-fade flex flex-col items-start">
             <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">
               {t('Explorer la maison')}
             </span>
-            <nav aria-label={t('Explorer la maison')} className="mt-5 flex flex-col items-center gap-3">
+            <nav aria-label={t('Explorer la maison')} className="mt-5 flex flex-col items-start gap-3">
               {EXPLORE_LINKS.map((item) => (
                 item.external ? (
                   <a
@@ -106,7 +101,7 @@ export function Footer() {
                   <Link
                     key={item.href}
                     href={path(item.href)}
-                    className="footer-link font-serif text-xl text-background/80 md:text-2xl"
+                    className="footer-link mr-auto font-serif text-xl text-background/80 md:text-2xl"
                     data-testid={`link-footer-explore-${item.href.replace('/', '')}`}
                   >
                     {t(item.label)}
@@ -115,45 +110,34 @@ export function Footer() {
               ))}
             </nav>
 
+          </div>
+
+          <div className="reveal-fade flex flex-col items-start md:pt-1">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Réserver votre table')}</span>
             <Link
               href={path('/reservation')}
-              className="footer-link mt-10 inline-flex items-center gap-3 border-b border-brand/60 pb-2 font-serif text-lg text-background"
+              className="group footer-link mt-5 inline-flex w-full items-center justify-between gap-5 border-0 border-b border-brand/50 px-0 py-3 font-sans text-xs uppercase tracking-[0.24em] text-background transition-colors duration-300 hover:bg-transparent"
               data-testid="link-footer-reserve"
             >
-              {t('Réserver votre table')}
-              <ArrowRight className="h-4 w-4 text-brand" />
+              {t('Réserver')}
+              <ArrowRight className="h-3.5 w-3.5 text-brand transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
+            <span className="mt-12 text-[10px] uppercase tracking-[0.3em] text-background/40">{t('Langues')}</span>
+            <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
+              <span className={lang === 'fr' ? 'text-background' : 'text-background/35'}>FR</span>
+              <span className="text-background/25">/</span>
+              {lang === 'fr' ? (
+                <Link href={otherLangHref} hrefLang={other} className="footer-link inline-flex items-center" data-testid="link-footer-lang-en">EN</Link>
+              ) : (
+                <span className="text-background">EN</span>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="mt-16 flex items-center justify-center md:mt-20">
-          <span className="h-px w-24 bg-background/15" />
-        </div>
-
-        <div className="mt-10 flex flex-col items-center gap-6 pt-2 md:flex-row md:justify-between">
-          <div className="flex items-center gap-4">
-            <a href={RESTAURANT.instagramUrl} target="_blank" rel="noopener noreferrer" className="social-link" data-testid="link-social-instagram" aria-label="Instagram">
-              <InstagramMark className="h-5 w-5" />
-            </a>
-            <a href={RESTAURANT.facebookUrl} target="_blank" rel="noopener noreferrer" className="social-link" data-testid="link-social-facebook" aria-label="Facebook">
-              <FacebookMark className="h-5 w-5" />
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em]">
-            <span className={lang === 'fr' ? 'text-background' : 'text-background/35'}>FR</span>
-            <span className="text-background/25">/</span>
-            {lang === 'fr' ? (
-              <Link href={otherLangHref} hrefLang={other} className="footer-link inline-flex items-center" data-testid="link-footer-lang-en">EN</Link>
-            ) : (
-              <span className="text-background">EN</span>
-            )}
-          </div>
-        </div>
-
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-background/10 pt-6 text-xs text-background/45 md:flex-row">
-          <p>© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <div className="mt-12 flex flex-col gap-4 border-t border-background/10 pt-5 text-xs text-background/45 md:flex-row md:items-center md:justify-between">
+          <p>© 2026 LAIT THYM SEL. {t("Tous droits réservés")}</p>
+          <div className="flex items-center gap-6 whitespace-nowrap">
             <Link href={path("/mentions-legales")} className="footer-meta-link" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
             <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>
             <Link href={path("/cgu")} className="footer-meta-link" data-testid="link-footer-terms">{t("CGU")}</Link>

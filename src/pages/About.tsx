@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useLang } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 /* Les neuf images de la galerie éditoriale ci-dessous. */
 const GALLERY_TILES = [
@@ -93,50 +94,21 @@ export default function About() {
         )}
       />
 
-      {/* ── Hero ────────────────────────────────────────────────
-          Une image, un nom, rien d'autre. Les volets à onglets qui
-          occupaient cette place empilaient trois blocs de texte que
-          personne ne lit debout devant une photo pleine page : le
-          récit est déjà développé dans les sections qui suivent.
-
-          Le <h1> est ici visible et non plus masqué : il n'y a plus de
-          titre concurrent à l'écran. */}
-      <section data-nav-theme="dark" className="hero-grain relative h-[100svh] min-h-[560px] overflow-hidden bg-foreground">
-        <img
-          /* La photo doit montrer le lieu ACTUEL (rue Boisnet).
-             `salle-tables-verres.webp` est l'ancienne salle de la
-             Doutre — rideaux jaunes, mur de schiste — quittée fin
-             2023 : à ne pas remettre ici. Elle était de plus en
-             870x400, trop peu pour un plein écran. */
-          src="/photos/salle-vitrail.webp"
-          srcSet="/photos/salle-vitrail-480.webp 480w, /photos/salle-vitrail-960.webp 960w, /photos/salle-vitrail.webp 1600w"
-          sizes="100vw"
-          alt={t("Table dressée devant le vitrail, Lait Thym Sel")}
-          width={1600}
-          height={1067}
-          fetchPriority="high"
-          /* object-position calé en haut : sur un écran très haut, le
-             recadrage doit rogner le sol plutôt que les visages. */
-          className="absolute inset-0 h-full w-full object-cover object-[center_45%] [filter:contrast(1.08)_saturate(1.08)]"
-        />
-        {/* Voile dégradé du bas vers le haut — même grammaire que le
-            hero d'accueil, maintenant que le titre est lui aussi calé
-            en bas à gauche plutôt qu'au centre du cadre. */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(20,14,10,0.85) 0%, rgba(20,14,10,0.55) 32%, rgba(20,14,10,0.22) 62%, rgba(20,14,10,0.08) 100%)',
-          }}
-        />
-        <div className="relative z-10 flex h-full flex-col items-start justify-end px-6 pb-16 pt-20 text-left text-background md:px-16 md:pb-20 lg:px-20">
-          <span className="text-[11px] uppercase tracking-[0.45em] text-background/70">
-            {t("Notre histoire")}
+      <section
+        data-nav-theme="dark"
+        className="hero-grain relative h-[100svh] min-h-[440px] flex items-center justify-start overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0 bg-foreground">
+          <HeroSlideshow
+            primaryAlt={t('Salle du restaurant Lait Thym Sel dressée pour un dîner, à Angers')}
+          />
+        </div>
+        <div className="relative z-10 flex w-full max-w-4xl flex-col items-start px-6 pt-32 pb-20 text-left md:px-16 lg:px-20">
+          <span className="reveal-fade block text-[10px] uppercase tracking-[0.4em] text-white/70">
+            {t('Restaurant gastronomique · Angers')}
           </span>
-          <h1 className="mt-4 font-serif text-4xl leading-[1.05] md:text-6xl">
-            {t("Deux cuisiniers,")}
-            <br />
-            {t("une maison.")}
+          <h1 className="mt-4 max-w-[780px] font-serif text-2xl tracking-tight text-white leading-[1.05] md:text-3xl lg:text-4xl">
+            {t('L’Élégance de la Simplicité')}
           </h1>
         </div>
       </section>

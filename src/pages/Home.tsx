@@ -5,7 +5,6 @@ import { Gift, Instagram, Phone } from 'lucide-react';
 
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { Ornament } from '@/components/Ornament';
 import { Sparkles } from '@/components/Sparkles';
 import { HeroSlideshow } from '@/components/HeroSlideshow';
 import { Button } from '@/components/ui/button';
@@ -53,7 +52,7 @@ function HeroTitle({ lines }: { lines: string[] }) {
             const span = (
               <span className="hero-title__mask" key={`${li}-${wi}`}>
                 <span
-                  className="hero-title__word"
+                  className={`hero-title__word ${word === 'L’Élégance' || word === 'la' ? 'font-medium' : ''}`}
                   style={{ '--word-delay': `${delay}s` } as CSSProperties}
                 >
                   {word}
@@ -135,11 +134,6 @@ export default function Home() {
             <HeroTitle lines={[t('L’Élégance'), t('de la Simplicité')]} />
           </h1>
 
-          {/* Sous-titre : accroche courte, largeur contrainte pour
-              rester lisible sur une à deux lignes. */}
-          <p className="reveal-fade mt-5 max-w-[580px] text-sm md:text-base text-white/80 leading-relaxed">
-            {t('Cuisine de saison, produits d’exception, atmosphère intime.')}
-          </p>
         </div>
       </section>
 
@@ -187,9 +181,6 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full space-y-6 md:w-[54%]">
-              <div className="reveal-fade flex items-center gap-4" style={{ ['--reveal-delay' as string]: '0ms' }}>
-                <Ornament variant="lait" className="h-5 w-5 text-brand/50" />
-              </div>
               <div className="lift" style={{ ['--reveal-delay' as string]: '100ms' }}>
                 <h2 className="font-serif text-4xl uppercase tracking-tight text-foreground leading-tight lg:text-5xl">
                   {t('La Cuisine')}
@@ -255,9 +246,6 @@ export default function Home() {
                 className="rule-drop absolute left-0 top-1 hidden h-[calc(100%-0.5rem)] w-px bg-brand/45 md:block"
                 style={{ ['--reveal-delay' as string]: '250ms' }}
               />
-              <div className="reveal-fade flex items-center gap-4" style={{ ['--reveal-delay' as string]: '0ms' }}>
-                <Ornament variant="thym" className="h-5 w-5 text-brand/50" />
-              </div>
               <span
                 className="reveal-slide block text-[11px] uppercase tracking-[0.35em] text-brand"
                 style={{ ['--reveal-delay' as string]: '40ms' }}
@@ -315,9 +303,6 @@ export default function Home() {
               style={{ ['--reveal-delay' as string]: '0ms' }}
             >
               <div>
-                <div className="flex items-center gap-4">
-                  <Ornament variant="sel" className="h-4 w-4 text-brand/50" />
-                </div>
                 <span className="mt-2 block text-[11px] uppercase tracking-[0.35em] text-brand">
                   {t('La carte')}
                 </span>
@@ -526,17 +511,18 @@ export default function Home() {
             <button
               onClick={reserve}
               disabled={opening}
-              className="inline-flex items-center justify-center h-14 px-10 text-sm tracking-[0.25em] uppercase font-medium rounded-none bg-background text-foreground hover:bg-brand/10 transition-colors duration-300 w-full sm:w-auto cursor-pointer disabled:opacity-70"
+              className="inline-flex h-14 w-full cursor-pointer items-center justify-center rounded-none border border-background bg-background px-10 text-sm font-medium uppercase tracking-[0.25em] text-foreground shadow-[0_8px_24px_rgba(70,45,20,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-background/90 hover:shadow-[0_12px_28px_rgba(70,45,20,0.18)] disabled:cursor-default disabled:opacity-70 sm:w-auto"
               data-testid="btn-home-reserve"
             >
               {opening ? t('Ouverture…') : t('Réserver en ligne')}
             </button>
             <a
               href={RESTAURANT.phoneHref}
-              className="inline-flex items-center justify-center h-14 px-10 text-sm tracking-[0.25em] uppercase font-medium rounded-none border border-background/20 text-background hover:bg-background hover:text-foreground transition-colors duration-300 w-full sm:w-auto"
+              aria-label={t(`Nous appeler au ${RESTAURANT.phone}`)}
+              className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-none border border-background/35 px-10 text-sm font-medium uppercase tracking-[0.25em] text-background transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:bg-brand/10 hover:text-background sm:w-auto"
               data-testid="link-reserve-call"
             >
-              <Phone className="w-4 h-4 mr-2" />
+              <Phone className="h-4 w-4 text-background" />
               {RESTAURANT.phone}
             </a>
           </div>
