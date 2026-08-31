@@ -207,7 +207,7 @@ export function Navbar() {
           l'écran — d'autant plus nettement sur grand écran. Ici, il
           est réellement aligné à gauche, et le bouton de réservation
           à droite. */}
-      <div className="pointer-events-auto relative z-[70] w-full px-5 md:px-8">
+      <div className="pointer-events-auto relative z-[70] w-full px-6 md:px-8">
         <div className="relative flex items-center justify-between gap-4">
           {/* Gauche : le nom de la maison, seul. */}
           <Link
@@ -280,13 +280,13 @@ export function Navbar() {
               Plus de bouton flottant qui suit le défilement : ce
               bouton-ci, toujours à la même place dans l'en-tête,
               suffit. */}
-          <div className="flex items-center gap-5 md:gap-7">
+          <div className="flex items-center gap-6 md:gap-7">
             <LangSwitch onDark={navOnDark || mobileMenuOpen} className="hidden sm:flex" />
             <ReserveButton onDarkHero={navOnDark || mobileMenuOpen} />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
-                'toggle-nav group relative -mr-1.5 inline-flex items-center p-1.5 transition-opacity duration-300 xl:hidden',
+                'toggle-nav group relative -mr-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-current/20 p-1.5 transition-[background-color,border-color,opacity] duration-300 hover:bg-current/5 xl:hidden',
                 mobileMenuOpen && 'is-open',
               )}
               data-testid="button-mobile-menu"
