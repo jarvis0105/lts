@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { Ornament } from '@/components/Ornament';
 
 /* ────────────────────────────────────────────────────────────────
    Easter egg — brief §24 : « extrêmement subtil… non intrusif… sans
@@ -80,7 +79,6 @@ export function EasterEgg() {
               transform: visible ? 'translateY(0)' : 'translateY(10px)',
             }}
           >
-            <Ornament variant={item.variant} className="h-10 w-10 text-brand md:h-14 md:w-14" />
             <span className="font-serif text-sm uppercase tracking-[0.4em] text-background/70">
               {item.label}
             </span>

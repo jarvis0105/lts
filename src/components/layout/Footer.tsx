@@ -1,7 +1,6 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { useLang } from "@/i18n";
-import { Ornament } from "@/components/Ornament";
 import { DINNER_DAYS_LABEL, LUNCH_DAYS_LABEL, formatService, LUNCH, DINNER, RESTAURANT } from "@/lib/restaurant";
 
 /* Sommaire éditorial du pied de page — numéroté comme un index de
@@ -41,14 +40,6 @@ export function Footer() {
     <footer data-nav-theme="dark" className="relative overflow-hidden bg-foreground text-background/90">
       <div className="absolute inset-x-0 top-0 h-px bg-brand/70" />
 
-      {/* Le motif "sel" cité une dernière fois, en filigrane — la
-          signature graphique de la maison referme la page plutôt
-          que le nom en toutes lettres. */}
-      <Ornament
-        variant="sel"
-        className="pointer-events-none absolute -right-16 -top-16 hidden h-[26rem] w-[26rem] text-brand/[0.07] md:block"
-      />
-
       <div className="container relative mx-auto px-5 pb-8 pt-16 md:px-8 md:pb-10 md:pt-24">
         <div className="mx-auto max-w-3xl">
         <div className="mt-0 grid gap-14 md:mt-0 md:grid-cols-12 md:gap-12">
@@ -62,12 +53,6 @@ export function Footer() {
             <p className="mt-5 font-serif text-xl italic text-background/60">
               {t('L’Élégance de la Simplicité')}
             </p>
-            <div className="mt-3 flex items-center justify-start gap-2" aria-hidden="true">
-              <Ornament variant="lait" className="h-3.5 w-3.5 text-brand/45" />
-              <Ornament variant="thym" className="h-3.5 w-3.5 text-brand/45" />
-              <Ornament variant="sel" className="h-3.5 w-3.5 text-brand/45" />
-            </div>
-
             <div className="mt-8 text-sm leading-relaxed text-background/65">
               <p>{RESTAURANT.street}, {RESTAURANT.postalCode} {RESTAURANT.city}</p>
               <p className="mt-2 text-xs text-background/45">
@@ -106,7 +91,7 @@ export function Footer() {
                   <Link
                     key={item.href}
                     href={path(item.href)}
-                    className="footer-link font-serif text-xl text-background/80 md:text-2xl"
+                    className="footer-link mr-auto font-serif text-xl text-background/80 md:text-2xl"
                     data-testid={`link-footer-explore-${item.href.replace('/', '')}`}
                   >
                     {t(item.label)}
@@ -152,7 +137,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-background/10 pt-6 text-xs text-background/45 md:flex-row">
-          <p>© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
+          <p className="mr-auto">© {new Date().getFullYear()} LAIT THYM SEL. {t("Tous droits réservés.")}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href={path("/mentions-legales")} className="footer-meta-link" data-testid="link-footer-legal">{t("Mentions légales")}</Link>
             <Link href={path("/rgpd")} className="footer-meta-link" data-testid="link-footer-privacy">{t("RGPD")}</Link>

@@ -5,7 +5,6 @@ import { Gift, Instagram, Phone } from 'lucide-react';
 
 import { Layout } from '@/components/layout/Layout';
 import { SEO } from '@/components/SEO';
-import { Ornament } from '@/components/Ornament';
 import { Sparkles } from '@/components/Sparkles';
 import { HeroSlideshow } from '@/components/HeroSlideshow';
 import { Button } from '@/components/ui/button';
@@ -187,9 +186,6 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full space-y-6 md:w-[54%]">
-              <div className="reveal-fade flex items-center gap-4" style={{ ['--reveal-delay' as string]: '0ms' }}>
-                <Ornament variant="lait" className="h-5 w-5 text-brand/50" />
-              </div>
               <div className="lift" style={{ ['--reveal-delay' as string]: '100ms' }}>
                 <h2 className="font-serif text-4xl uppercase tracking-tight text-foreground leading-tight lg:text-5xl">
                   {t('La Cuisine')}
@@ -255,9 +251,6 @@ export default function Home() {
                 className="rule-drop absolute left-0 top-1 hidden h-[calc(100%-0.5rem)] w-px bg-brand/45 md:block"
                 style={{ ['--reveal-delay' as string]: '250ms' }}
               />
-              <div className="reveal-fade flex items-center gap-4" style={{ ['--reveal-delay' as string]: '0ms' }}>
-                <Ornament variant="thym" className="h-5 w-5 text-brand/50" />
-              </div>
               <span
                 className="reveal-slide block text-[11px] uppercase tracking-[0.35em] text-brand"
                 style={{ ['--reveal-delay' as string]: '40ms' }}
@@ -315,9 +308,6 @@ export default function Home() {
               style={{ ['--reveal-delay' as string]: '0ms' }}
             >
               <div>
-                <div className="flex items-center gap-4">
-                  <Ornament variant="sel" className="h-4 w-4 text-brand/50" />
-                </div>
                 <span className="mt-2 block text-[11px] uppercase tracking-[0.35em] text-brand">
                   {t('La carte')}
                 </span>
