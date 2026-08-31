@@ -190,7 +190,7 @@ export function Navbar() {
                 href={path(link.href)}
                 className={cn(
                   'nav-link-premium font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
-                  navOnDark ? 'text-white' : 'text-foreground',
+                  navOnDark || mobileMenuOpen ? 'text-white' : 'text-foreground',
                 )}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
@@ -234,7 +234,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'pointer-events-none absolute -inset-x-5 -inset-y-3 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(18,15,12,0.16)_0%,rgba(18,15,12,0.06)_52%,transparent_76%)] blur-md transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-60' : 'opacity-0',
+                  navOnDark || mobileMenuOpen ? 'opacity-60' : 'opacity-0',
                 )}
               />
               {/* Deux images superposées, chacune s'effaçant vers
@@ -260,7 +260,7 @@ export function Navbar() {
                 alt="Lait Thym Sel — Fanny & Gaëtan Morvan"
                 className={cn(
                   'absolute inset-0 block h-full w-auto object-contain transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-0' : 'opacity-100',
+                  navOnDark || mobileMenuOpen ? 'opacity-0' : 'opacity-100',
                 )}
               />
               <img
@@ -269,7 +269,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'absolute inset-0 block h-full w-auto object-contain transition-opacity duration-[400ms] ease',
-                  navOnDark ? 'opacity-100' : 'opacity-0',
+                  navOnDark || mobileMenuOpen ? 'opacity-100' : 'opacity-0',
                 )}
               />
             </div>
@@ -281,8 +281,8 @@ export function Navbar() {
               bouton-ci, toujours à la même place dans l'en-tête,
               suffit. */}
           <div className="flex items-center gap-5 md:gap-7">
-            <LangSwitch onDark={navOnDark} className="hidden sm:flex" />
-            <ReserveButton onDarkHero={navOnDark} />
+            <LangSwitch onDark={navOnDark || mobileMenuOpen} className="hidden sm:flex" />
+            <ReserveButton onDarkHero={navOnDark || mobileMenuOpen} />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
@@ -305,7 +305,7 @@ export function Navbar() {
                 aria-hidden="true"
                 className={cn(
                   'relative block overflow-visible',
-                  navOnDark ? 'text-white' : 'text-foreground',
+                  navOnDark || mobileMenuOpen ? 'text-white' : 'text-foreground',
                 )}
               >
                 <line x1="0" y1="3" x2="26" y2="3" className="toggle-nav__bar toggle-nav__bar--1" />
@@ -388,7 +388,7 @@ export function Navbar() {
             </div>
 
             <div className="mt-7 flex justify-start sm:hidden">
-              <LangSwitch onDark className="text-background/70" />
+              <LangSwitch onDark className="text-white" />
             </div>
           </div>
         </div>
