@@ -8,28 +8,22 @@ import { REVIEWS } from "@/lib/content";
 /* ── Distinctions ────────────────────────────────────────────────── */
 const AWARDS = [
   {
-    icon: "★",
     label: "Étoile Michelin",
     detail: "Étoilé depuis 2019",
-    bg: "bg-foreground",
-    text: "text-white",
     accent: "text-brand",
+    michelin: true,
   },
   {
-    icon: "☘",
+    icon: "✦",
     label: "Étoile Verte",
     detail: "Gastronomie durable · Depuis 2021",
-    bg: "bg-emerald-800",
-    text: "text-white",
-    accent: "text-emerald-300",
+    accent: "text-brand",
   },
   {
     icon: "15,5",
     label: "/ 20",
     detail: "Gault & Millau",
-    bg: "bg-[#c8102e]",
-    text: "text-white",
-    accent: "text-white/80",
+    accent: "text-brand",
     scoreMode: true,
   },
 ];
@@ -71,24 +65,30 @@ export default function Reviews() {
       {/* ── Awards ─────────────────────────────────────────────────── */}
       <section data-nav-theme="dark" className="py-16 bg-foreground">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
             {AWARDS.map((a, i) => (
-              <div key={i}
-                                className={`reveal-fade ${a.bg} ${a.text} p-10 text-center flex flex-col items-center justify-center gap-3`}
-                                style={{ ['--reveal-delay' as string]: `${i * 140}ms` }}
+              <div
+                key={i}
+                className="reveal-fade flex min-h-[220px] flex-col items-center justify-center gap-5 border border-white/10 bg-white/[0.03] p-8 text-center transition-colors duration-500 hover:border-brand/50 hover:bg-white/[0.06]"
+                style={{ ['--reveal-delay' as string]: `${i * 140}ms` }}
               >
-                {a.scoreMode ? (
+                {a.michelin ? (
+                  <div className="flex flex-col items-center leading-none text-brand">
+                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.34em]">MICHELIN</span>
+                    <span className="mt-2 font-serif text-2xl tracking-[0.18em]">GUIDE</span>
+                    <span className="mt-3 h-px w-8 bg-brand/70" />
+                  </div>
+                ) : a.scoreMode ? (
                   <div className="flex items-baseline gap-1">
-                    <span className={`font-serif text-5xl font-bold ${a.accent}`}>{a.icon}</span>
-                    <span className="font-serif text-2xl text-white/60">{t(a.label)}</span>
+                    <span className={`font-serif text-5xl font-medium ${a.accent}`}>{a.icon}</span>
+                    <span className="font-serif text-2xl text-white/55">{t(a.label)}</span>
                   </div>
                 ) : (
-                  <span className={`text-5xl ${a.accent}`}>{a.icon}</span>
+                  <span className={`font-serif text-4xl ${a.accent}`}>{a.icon}</span>
                 )}
                 <div>
-                  {!a.scoreMode && <p className={`font-serif text-lg font-medium ${a.text}`}>{t(a.label)}</p>}
-                  {a.scoreMode && <p className="font-serif text-lg ">{t(a.detail)}</p>}
-                  {!a.scoreMode && <p className={`text-xs uppercase tracking-[0.25em] mt-1 ${a.accent}`}>{t(a.detail)}</p>}
+                  <p className="font-serif text-lg font-medium text-white">{t(a.label)}</p>
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.25em] text-brand/80">{t(a.detail)}</p>
                 </div>
               </div>
             ))}
