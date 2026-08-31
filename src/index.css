@@ -832,11 +832,8 @@ button:hover .btn-underline::after {
   transition: color 320ms ease, transform 320ms ease, background-color 320ms ease, box-shadow 320ms ease;
 }
 
-/* Effet de survol du footer, repensé pour être plus sobre : un
-   simple trait fin qui se déploie de droite à gauche (repris du même
-   principe que `.nav-link-premium` dans l'en-tête), plus un léger
-   éclaircissement de la couleur — sans halo ni aplat de fond, qui
-   étaient trop appuyés pour de grands liens en serif. */
+/* Effet de survol du footer : une variation de couleur douce, sans
+   soulignement ni aplat de fond. */
 .footer-link,
 .footer-meta-link {
   position: relative;
@@ -846,32 +843,14 @@ button:hover .btn-underline::after {
 
 .footer-link::after,
 .footer-meta-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.2em;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.55;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  display: none;
 }
 
 .footer-link:hover,
 .footer-link:focus-visible,
 .footer-meta-link:hover,
 .footer-meta-link:focus-visible {
-  color: hsl(var(--background));
-}
-
-.footer-link:hover::after,
-.footer-link:focus-visible::after,
-.footer-meta-link:hover::after,
-.footer-meta-link:focus-visible::after {
-  transform-origin: left;
-  transform: scaleX(1);
+  color: hsl(var(--brand) / 0.9);
 }
 
 .footer-cta-link {
@@ -896,11 +875,6 @@ button:hover .btn-underline::after {
   .footer-link,
   .footer-meta-link,
   .footer-cta-link {
-    transition: none;
-  }
-
-  .footer-link::after,
-  .footer-meta-link::after {
     transition: none;
   }
 
