@@ -1557,8 +1557,8 @@ html.lenis body {
   /* Terracotta pour l'accent courant (kickers, icônes, filets) ;
      caramel, plus clair et plus doré, pour l'accent « fort »
      (survols, éléments qui doivent ressortir davantage). */
-  --brand: 15 58% 48%;
-  --brand-strong: 33 50% 56%;
+  --brand: 35 49% 56%;
+  --brand-strong: 35 49% 56%;
 
   --primary: 18 32% 18%;
   --primary-foreground: 30 30% 98%;
@@ -1607,8 +1607,8 @@ html.lenis body {
   --popover-foreground: 40 20% 94%;
   --popover-border: 15 20% 30%;
   
-  --brand: 26 55% 64%;
-  --brand-strong: 31 32% 72%;
+  --brand: 35 49% 56%;
+  --brand-strong: 35 49% 56%;
 
   --primary: 40 20% 94%;
   --primary-foreground: 15 36% 23%;

@@ -189,7 +189,7 @@ export function Navbar() {
               <Link
                 href={path(link.href)}
                 className={cn(
-                  'nav-link-premium font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#B8865B] focus-visible:text-[#B8865B]',
+                  'nav-link-premium font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
                   navOnDark ? 'text-white' : 'text-foreground',
                 )}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
