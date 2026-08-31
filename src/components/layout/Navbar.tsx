@@ -186,7 +186,7 @@ export function Navbar() {
                   page active : pas de surlignement du lien courant.
                   Le survol se limite à un léger changement d'opacité —
                   sobre, sans trait ni fond. */}
-              <a
+              <Link
                 href={path(link.href)}
                 className={cn(
                   'nav-link-premium cursor-pointer font-nav text-[17px] tracking-[0.12em] transition-colors duration-300 hover:text-[#C69357] focus-visible:text-[#C69357]',
@@ -195,7 +195,7 @@ export function Navbar() {
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
               >
                 {t(link.label)}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -332,7 +332,7 @@ export function Navbar() {
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col px-8 pb-10 pt-[104px]">
           <nav className="flex flex-1 flex-col items-start justify-center gap-0.5">
             {[...NAV_LINKS, { href: "/reservation", label: "Réserver" }].map((link, i) => (
-              <a
+              <Link
                 key={link.href}
                 href={path(link.href)}
                 /* Cascade : chaque lien part invisible et légèrement
@@ -348,7 +348,7 @@ export function Navbar() {
                 data-testid={`link-mobile-nav-${link.label.toLowerCase()}`}
               >
                 {t(link.label)}
-              </a>
+              </Link>
             ))}
           </nav>
 
